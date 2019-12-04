@@ -1,6 +1,8 @@
 package com.company;
 
 import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main {
     public static String pareNoel = "*<]:-DOo";
@@ -14,7 +16,9 @@ public class Main {
         int countP = 0;
         int countR = 0;
         int countF = 0;
-
+        System.out.println();
+        System.out.println("SIN EXPRESIONES REGULARES ");
+        System.out.println();
         char c = ' ';
         String line ="";
         while ((line = inputStream.readLine())!=null){
@@ -72,6 +76,64 @@ public class Main {
             }
 
         }
+        fileReader.close();
+        inputStream.close();
 
+
+        ////////////  CON EXPRESIONES REGULARES   //////////////
+        int countP2 = 0;
+        int countR2 = 0;
+        int countF2 = 0;
+
+        System.out.println();
+        System.out.println("CON EXPRESIONES REGULARES ");
+        System.out.println();
+        FileReader fileReader2 = new FileReader(new File("santako.txt"));
+        BufferedReader inputStream2 = new BufferedReader(fileReader2);
+
+        String line2 ="";
+        while ((line2 = inputStream2.readLine())!=null){
+
+            Pattern patternNoel = Pattern.compile("\\"+pareNoel);
+            Pattern patternRens = Pattern.compile(">:o\\)");
+            Pattern patternFollets = Pattern.compile(follets);
+
+            Matcher matcherNoel = patternNoel.matcher(line2);
+            Matcher matcherRens = patternRens.matcher(line2);
+            Matcher matcherFollets = patternFollets.matcher(line2);
+
+            while (matcherNoel.find()){
+                countP2++;
+            }
+            while (matcherRens.find()){
+                countR2++;
+            }
+            while (matcherFollets.find()){
+                countF2++;
+            }
+
+            if (countP2>0){
+                System.out.print("Pare Noel ("+countP2+") ");
+                countF2 =countF2-countP2;
+
+            }
+            if (countR2>0){
+                System.out.print("Ren ("+countR2+") ");
+
+            }
+            if (countF2>0){
+
+                System.out.print("Follet ("+countF2+") ");
+
+            }
+            if (countP2 != 0 || countR2 != 0|| countF2 != 0){
+                System.out.println();
+            }
+            countF2 = 0;
+            countP2 = 0;
+            countR2 = 0;
+        }
+        fileReader.close();
+        inputStream.close();
     }
 }
