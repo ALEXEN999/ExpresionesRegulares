@@ -52,12 +52,18 @@ public class Main {
 
 
                 }
-                System.out.println();
-                System.out.println("papa Noel: "+countP);
-                System.out.println("Rens: "+countR);
-                System.out.println("Follets: "+countF);
+                if (countP>0){
+                    System.out.print("Pare Noel ("+countP+") ");
+                }
+                if (countR>0){
+                    System.out.print("Ren ("+countR+") ");
 
-                System.out.println(line);
+                }
+                if (countF>0){
+                    System.out.print("Follet ("+countF+") ");
+                }
+                System.out.println();
+
                 countF = 0;
                 countP = 0;
                 countR = 0;
