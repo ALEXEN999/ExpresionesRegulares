@@ -133,7 +133,7 @@ public class Main {
             countP2 = 0;
             countR2 = 0;
         }
-        fileReader.close();
-        inputStream.close();
+        fileReader2.close();
+        inputStream2.close();
     }
 }
